@@ -15,13 +15,16 @@
 <header>
   <nav>
     <div class="logo">Varna<span style="color:var(--rust)">Civil</span> <span class="mono">STRUCT.01</span></div>
-    <ul>
-      <li><a href="services.html">خدمات کامل</a></li>
-      <li><a href="#packages">پکیج‌ها</a></li>
-      <li><a href="#about">درباره من</a></li>
-      <li><a href="#faq">سوالات متداول</a></li>
+    <ul id="siteNav">
+      <li><a href="index.html">صفحه اصلی</a></li>
+      <li><a href="index.html#packages">پکیج‌ها</a></li>
+      <li><a href="education.html">آموزش</a></li>
+      <li><a href="materials.html">معرفی متریال</a></li>
+      <li><a href="construction-guide.html">صفر تا صد ساخت‌وساز</a></li>
+      <li><a href="index.html#contact">ارتباط با ما</a></li>
     </ul>
-    <a href="#contact" class="btn nav-cta">مشاوره رایگان</a>
+    <a href="index.html#contact" class="btn nav-cta">مشاوره رایگان</a>
+    <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false">☰</button>
   </nav>
 </header>
 
@@ -42,17 +45,8 @@
       </div>
     </div>
     <div class="truss-frame">
-      <span class="tag">DWG-01 · SCALE 1:100</span>
-      <svg viewBox="0 0 400 260" width="100%">
-        <path d="M20 220 L20 60 L200 20 L380 60 L380 220"/>
-        <line x1="20" y1="220" x2="380" y2="220"/>
-        <line x1="20" y1="140" x2="380" y2="140"/>
-        <line x1="20" y1="140" x2="200" y2="20"/>
-        <line x1="380" y1="140" x2="200" y2="20"/>
-        <line x1="110" y1="180" x2="110" y2="140"/>
-        <line x1="290" y1="180" x2="290" y2="140"/>
-        <line x1="110" y1="180" x2="200" y2="20" stroke-opacity="0"/>
-      </svg>
+      <span class="tag">SITE-01 · در حال اجرا</span>
+      <img src="images/project-01.jpg" alt="اسکلت فلزی پروژه در حال اجرا" style="width:100%;height:100%;object-fit:cover;border-radius:2px;display:block;">
     </div>
   </div>
 </section>
@@ -248,8 +242,8 @@
       <h2>اطلاعات تماس</h2>
       <p>معمولاً ظرف ۲۴ تا ۴۸ ساعت کاری پاسخ داده می‌شه. برای پروژه‌های مشاوره طراحی، لطفاً نوع سازه و موقعیت پروژه رو هم بنویس.</p>
       <ul>
-        <li><b>EMAIL</b> info@varnacivil.com</li>
-        <li><b>TEL</b> 09xx-xxx-xxxx</li>
+        <li><b>EMAIL</b> amin.hesari.0099@gmail.com</li>
+        <li><b>TEL</b> 0911-493-8387</li>
         <li><b>LOC</b> رشت، ایران</li>
       </ul>
     </div>
@@ -298,63 +292,20 @@
 <footer>
   <div class="wrap footer-grid">
     <div>© <span id="year"></span> VarnaCivil — طراحی سازه، آموزش، اجرا</div>
-    <div style="display:flex;gap:20px;">
-      <a href="#services">خدمات</a>
-      <a href="#packages">پکیج‌ها</a>
-      <a href="#about">درباره من</a>
-      <a href="#faq">سوالات متداول</a>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <a href="services.html">خدمات کامل</a>
+      <a href="index.html#packages">پکیج‌ها</a>
+      <a href="education.html">آموزش</a>
+      <a href="materials.html">معرفی متریال</a>
+      <a href="construction-guide.html">صفر تا صد ساخت‌وساز</a>
+      <a href="index.html#about">درباره من</a>
+      <a href="index.html#faq">سوالات متداول</a>
+      <a href="index.html#contact">ارتباط با ما</a>
     </div>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const contactForm = document.getElementById('contactForm');
-  if(contactForm){
-    contactForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      btn.textContent = 'در حال ارسال...';
-      btn.disabled = true;
-      try{
-        const res = await fetch(contactForm.action, {
-          method:'POST',
-          headers:{'Accept':'application/json'},
-          body:new FormData(contactForm)
-        });
-        const data = await res.json();
-        if(data.success){
-          document.getElementById('formSuccess').classList.add('show');
-          contactForm.reset();
-        } else {
-          alert('ارسال ناموفق بود. لطفاً دوباره تلاش کن یا مستقیم ایمیل بزن.');
-        }
-      } catch(err){
-        alert('ارسال ناموفق بود. لطفاً دوباره تلاش کن یا مستقیم ایمیل بزن.');
-      } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }
-    });
-  }
-  document.querySelectorAll('.faq-q').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const item = btn.parentElement;
-      const answer = item.querySelector('.faq-a');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(o=>{
-        o.classList.remove('open');
-        o.querySelector('.faq-a').style.maxHeight=null;
-      });
-      if(!isOpen){
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight+'px';
-      }
-    });
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

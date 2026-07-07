@@ -14,13 +14,16 @@
 <header>
   <nav>
     <div class="logo">Varna<span style="color:var(--rust)">Civil</span> <span class="mono">STRUCT.01</span></div>
-    <ul>
-      <li><a href="services.html">خدمات کامل</a></li>
+    <ul id="siteNav">
+      <li><a href="index.html">صفحه اصلی</a></li>
       <li><a href="index.html#packages">پکیج‌ها</a></li>
-      <li><a href="index.html#about">درباره من</a></li>
-      <li><a href="index.html#faq">سوالات متداول</a></li>
+      <li><a href="education.html">آموزش</a></li>
+      <li><a href="materials.html">معرفی متریال</a></li>
+      <li><a href="construction-guide.html">صفر تا صد ساخت‌وساز</a></li>
+      <li><a href="index.html#contact">ارتباط با ما</a></li>
     </ul>
     <a href="index.html#contact" class="btn nav-cta">مشاوره رایگان</a>
+    <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false">☰</button>
   </nav>
 </header>
 
@@ -171,18 +174,20 @@
 <footer>
   <div class="wrap footer-grid">
     <div>© <span id="year"></span> VarnaCivil — طراحی سازه، آموزش، اجرا</div>
-    <div style="display:flex;gap:20px;">
-      <a href="services.html">خدمات</a>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <a href="services.html">خدمات کامل</a>
       <a href="index.html#packages">پکیج‌ها</a>
+      <a href="education.html">آموزش</a>
+      <a href="materials.html">معرفی متریال</a>
+      <a href="construction-guide.html">صفر تا صد ساخت‌وساز</a>
       <a href="index.html#about">درباره من</a>
       <a href="index.html#faq">سوالات متداول</a>
+      <a href="index.html#contact">ارتباط با ما</a>
     </div>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
